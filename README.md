@@ -40,4 +40,23 @@
       }
     }
 ```
+
+Composição da classe Widgets:
 ![widgets.dart.png](widgets.dart.png)
+
+
+## snackBarWidgetsnackBarWidget: usage
+```dart
+    //...
+    final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
+    ScaffoldMessenger(
+      key: scaffoldMessengerKey,
+      child: Scaffold(
+        //...
+      )
+    )
+
+    //...
+    ()=> scaffoldMessengerKey.currentState!.showSnackBar(snackBarWidget(message: 'Minha mensagem!', erro: true, time: 3));
+```
