@@ -22,3 +22,22 @@
       }
     }
 ```
+
+## WIDGET: import e usage [with WidgetCore]
+```dart
+    import 'package:core_aladim_package/core_aladim_package.dart';
+
+    //...
+    class _MyClassPageState extends State<MyClassPage> with WidgetCore{
+      @override
+      Widget build(BuildContext context) {
+        return Material(
+            child: Scaffold(
+              appBar: appBar(title: 'Nome do app',),
+              //...
+            )
+        );
+      }
+    }
+```
+![widgets.dart.png](widgets.dart.png)
