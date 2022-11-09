@@ -7,7 +7,7 @@
         cupertino_icons: ^1.0.5
       core_aladim_package:
           git:
-            url: https://github.com/jacsontiede85/tisa_api_package.git
+            url: https://github.com/jacsontiede85/core_aladim_package.git
 ```
 
 ## API: import e usage
