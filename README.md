@@ -10,9 +10,9 @@
             url: https://github.com/jacsontiede85/tisa_api_package.git
 ```
 
-## import e usage
+## API: import e usage
 ```dart
-    import 'package:tisa_api/tisa_api.dart';
+    import 'package:core_aladim_package/core_aladim_package.dart';
     
     class MyClass{
       myFunction() async{
