@@ -58,7 +58,7 @@ class WidgetCore{
           }
       );
 
-  OutlinedButton outlinedButton({required String text, double? fontSize, required Function function, bool? iconLeft, double? sizeIcon, bool? loading, String? typeIcon}){
+  OutlinedButton outlinedButton({required String text, double? fontSize, Function? function, bool? iconLeft, double? sizeIcon, bool? loading, String? typeIcon}){
       typeIcon = typeIcon??'next';
       IconData icon = Icons.navigate_next;
       switch(typeIcon){
@@ -70,10 +70,12 @@ class WidgetCore{
       }
       return OutlinedButton(
         style: OutlinedButton.styleFrom(
-          backgroundColor: Colors.blue.withOpacity(0.8),
+          backgroundColor: function != null ? Colors.blue.withOpacity(0.8) : Color.fromARGB(255, 133, 143, 151).withOpacity(0.8),
           textStyle: TextStyle(color: Colors.white),
         ),
-        onPressed: ()=> function(),
+        onPressed: (){
+          if (function != null) function();
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
