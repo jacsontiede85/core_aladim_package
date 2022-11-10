@@ -192,7 +192,7 @@ class WidgetCore{
       );
   }
 
-  Widget get checkedConcluido =>
+  Widget checkedConcluido(String? mensagem) =>
       Container(
         padding: const EdgeInsets.fromLTRB(30.0, 150.0, 30.0, 150.0),
         color: Colors.black87.withOpacity(0.3),
@@ -210,7 +210,7 @@ class WidgetCore{
                     bottom: 20,
                     left: 20,
                     right: 20,
-                    child: Text('Concluído com sucesso!', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
+                    child: Text(mensagem??'Concluído com sucesso!', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
                   )
                 ],
               )
@@ -218,7 +218,7 @@ class WidgetCore{
         ),
       );
 
-  Widget get checkedError =>
+  Widget checkedError(String? mensagem) =>
       Container(
         padding: const EdgeInsets.fromLTRB(30.0, 100.0, 30.0, 100.0),
         color: Colors.black87.withOpacity(0.3),
@@ -236,7 +236,7 @@ class WidgetCore{
                     bottom: 20,
                     left: 20,
                     right: 20,
-                    child: Text('Ops! Ocorreu um erro inesperado.', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
+                    child: Text(mensagem??'Ops! Ocorreu um erro inesperado.', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
                   )
                 ],
               )
