@@ -192,7 +192,7 @@ class WidgetCore{
       );
   }
 
-  Widget checkedConcluido(String? mensagem) =>
+  Widget checkedConcluido({String? mensagem}) =>
       Container(
         padding: const EdgeInsets.fromLTRB(30.0, 150.0, 30.0, 150.0),
         color: Colors.black87.withOpacity(0.3),
@@ -218,7 +218,7 @@ class WidgetCore{
         ),
       );
 
-  Widget checkedError(String? mensagem) =>
+  Widget checkedError({String? mensagem}) =>
       Container(
         padding: const EdgeInsets.fromLTRB(30.0, 100.0, 30.0, 100.0),
         color: Colors.black87.withOpacity(0.3),
