@@ -121,7 +121,7 @@ class ApiPackage {
     Solucao: Tratar dados null para sql com HORA MIN
     Ex.: ENTRADA => TO_CHAR(SYSDATE,'HH24')     OU  TO_CHAR(SYSDATE,'MI')
           SAIDA  => TO_CHAR(SYSDATE,nullHH24'') OU  TO_CHAR(SYSDATE,nullMI'')
-   */
+  */
     sql = sql.replaceAll("(SYSDATE,null", "(SYSDATE,'");
     sql = sql.replaceAll("''", "'");
 
