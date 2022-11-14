@@ -122,8 +122,11 @@ class ApiPackage {
     Ex.: ENTRADA => TO_CHAR(SYSDATE,'HH24')     OU  TO_CHAR(SYSDATE,'MI')
           SAIDA  => TO_CHAR(SYSDATE,nullHH24'') OU  TO_CHAR(SYSDATE,nullMI'')
   */
+  if (sql.replaceAll("(SYSDATE,null", "(SYSDATE,'")){
+    print("AQUI>>>>");
     sql = sql.replaceAll("(SYSDATE,null", "(SYSDATE,'");
     sql = sql.replaceAll("''", "'");
+  }
 
     String s = sql.toString();
     if (s.substring(s.length - 2, s.length) == "''") sql = s.substring(0, s.length - 1);
