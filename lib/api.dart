@@ -103,6 +103,20 @@ class ApiPackage {
         sql = sql.replaceAll("= @", "= '").replaceAll("@,", "',");
         sql = sql.toString().replaceAll("@ where", "' where");
         sql = sql.toString().replaceAll("@ WHERE", "' WHERE");
+
+        
+        /*
+          @author Marlon Santos
+          Data: 14/11/2022
+          Motivo: Rotina 3780(JAVA) para flutter (app_separacao_fracionado_winthor) - Dados do embalador 
+          Ação: Mudar campos com null em datas e minutos 
+          Solucao: Tratar dados null para sql com HORA MIN
+          Ex.: ENTRADA => TO_CHAR(SYSDATE,'HH24')     OU  TO_CHAR(SYSDATE,'MI')
+                SAIDA  => TO_CHAR(SYSDATE,nullHH24'') OU  TO_CHAR(SYSDATE,nullMI'')
+        */  
+        sql = sql.replaceAll("''", "'").replaceAll("(SYSDATE,null", "(SYSDATE,'");
+
+        
       } catch (e) {}
     }
 
@@ -112,18 +126,6 @@ class ApiPackage {
     sql = sql.replaceAll(",'',", ",null,").replaceAll(", '',", ",null,").replaceAll(",  '',", ",null,").replaceAll(",   '',", ",null,").replaceAll(",'' ,", ",null,").replaceAll(",''  ,", ",null,").replaceAll(",''   ,", ",null,").replaceAll(", '' ,", ",null,");
     sql = sql.replaceAll(",''", ",null").replaceAll(", ''", ",null").replaceAll(",   ''", ",null");
     sql = sql.replaceAll("=''", "= null").replaceAll("= ''", "= null").replaceAll("=  ''", "= null");
-
-  /*
-    @author Marlon Santos
-    Data: 14/11/2022
-    Motivo: Rotina 3780(JAVA) para flutter (app_separacao_fracionado_winthor) - Dados do embalador 
-    Ação: Mudar campos com null em datas e minutos 
-    Solucao: Tratar dados null para sql com HORA MIN
-    Ex.: ENTRADA => TO_CHAR(SYSDATE,'HH24')     OU  TO_CHAR(SYSDATE,'MI')
-          SAIDA  => TO_CHAR(SYSDATE,nullHH24'') OU  TO_CHAR(SYSDATE,nullMI'')
-  */  
-  sql = sql.replaceAll("''", "'").replaceAll("(SYSDATE,null", "(SYSDATE,'");
-
 
     String s = sql.toString();
     if (s.substring(s.length - 2, s.length) == "''") sql = s.substring(0, s.length - 1);
