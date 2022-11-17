@@ -121,21 +121,17 @@ class ApiPackage {
       Ação: Mudar campos com null em datas e minutos 
       Solucao: Tratar dados null para sql com HORA MIN
       Ex.: ENTRADA => TO_CHAR(SYSDATE,'HH24')     OU  TO_CHAR(SYSDATE,'MI')
-          SAIDA  => TO_CHAR(SYSDATE,nullHH24'') OU  TO_CHAR(SYSDATE,nullMI'')
+            SAIDA  => TO_CHAR(SYSDATE,nullHH24'') OU  TO_CHAR(SYSDATE,nullMI'')
     */
     var aux = sql.replaceAll("(SYSDATE,null", "(SYSDATE,'");
     if (aux != sql){
-      print("\nIF\n");
-      sql.replaceAll("(SYSDATE,null", "(SYSDATE,'");
-      sql.replaceAll("''", "'");
-    }else{
-      print("\nELSE\n");
+      sql = sql.replaceAll("(SYSDATE,null", "(SYSDATE,'");
+      sql = sql.replaceAll("''", "'");
     }
 
     String s = sql.toString();
     if (s.substring(s.length - 2, s.length) == "''") sql = s.substring(0, s.length - 1);
 
-    print("\nNA FUNÇÂO: $sql\n");
     return sql;
   }
 
