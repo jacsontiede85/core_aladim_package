@@ -125,14 +125,17 @@ class ApiPackage {
     */
     var aux = sql.replaceAll("(SYSDATE,null", "(SYSDATE,'");
     if (aux != sql){
+      print("\nIF\n");
       sql.replaceAll("(SYSDATE,null", "(SYSDATE,'");
       sql.replaceAll("''", "'");
+    }else{
+      print("\nELSE\n");
     }
 
     String s = sql.toString();
     if (s.substring(s.length - 2, s.length) == "''") sql = s.substring(0, s.length - 1);
 
-    //print(sql);
+    print("\nNA FUNÇÂO: $sql\n");
     return sql;
   }
 
