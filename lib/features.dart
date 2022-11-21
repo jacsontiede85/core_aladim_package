@@ -276,6 +276,20 @@ class Features{
     return emailRegExp.hasMatch(email);
   }
 
+
+  String removerAcentos({required String string}) {
+    if(string.isEmpty)
+      return '';
+    var comAcento = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž()[]"\'!@#\$%&*+={}ªº,.;?/°|\\';
+    var semAcento = 'AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz()[]"\'!@#\$%&*+={}ªº,.;?/°|\\';
+    for (int i = 0; i < comAcento.length; i++) {
+      string = string.replaceAll(comAcento[i], semAcento[i]);
+    }
+    return string.replaceAll(' ', '-').toLowerCase();
+  }
+
+
+
   /// PERMISSÃO ROTINA 131 (TABLE PCPEDC, PCMETASUP)
   static String permissaoRotina131PCPEDC(String matricula) =>
       //                supervisor rotina 131"
