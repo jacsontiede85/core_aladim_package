@@ -270,6 +270,11 @@ class Features{
   }
 
 
+  //Verificar se o e-mail é válido
+  static bool isValidEmail({required String email}) {
+    final emailRegExp = RegExp(r"^[a-zA-Z0-9-.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    return emailRegExp.hasMatch(email);
+  }
 
   /// PERMISSÃO ROTINA 131 (TABLE PCPEDC, PCMETASUP)
   static String permissaoRotina131PCPEDC(String matricula) =>
