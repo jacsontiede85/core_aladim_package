@@ -277,7 +277,7 @@ class Features{
   }
 
 
-  String removerAcentos({required String string}){
+  static String removerAcentos({required String string}){
     if(string.isEmpty)
       return '';
     var comAcento = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž()[]"\'!@#\$%&*+={}ªº,.;?/°|\\';
