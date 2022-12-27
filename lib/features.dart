@@ -17,14 +17,20 @@ class Features{
     }
   }
 
-  static toFormatNumber(String valor) {
+  static toFormatNumber(String valor, {int? qtCasasDecimais}) {
+    if (valor == 'NaN') return '0,00';
+    if (valor == 'null') return '0,00';
     valor = valor.replaceAll(",", ".");
     try {
-      valor = numberFormat.format(double.parse(valor));
+      var _numberFormat = NumberFormat("#,##0.00", "pt_BR");
+      if(qtCasasDecimais!=null)
+        _numberFormat = NumberFormat("#,##${double.parse('0.0').toStringAsFixed(qtCasasDecimais)}", "pt_BR");
+      valor = _numberFormat.format(double.parse(valor));
     } catch (e) {
       valor = '0,00';
     }
-    if (valor == 'NaN') return '0,00';
+    //valor = valor.replaceAll(".", "0,");
+    //if (valor == 'NaN') return '0,00';
     return valor;
   }
 
