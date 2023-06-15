@@ -70,7 +70,9 @@ class WidgetCore{
       }
       return OutlinedButton(
         style: OutlinedButton.styleFrom(
-          backgroundColor: function != null ? backgroundColor ?? Colors.blue.withOpacity(0.8) : Color.fromARGB(255, 133, 143, 151).withOpacity(0.8),
+          backgroundColor: function != null ?
+            backgroundColor ?? Colors.blue.withOpacity(0.8)
+            : Color.fromARGB(255, 133, 143, 151).withOpacity(0.8),
           textStyle: TextStyle(color: Colors.white),
         ),
         onPressed: (){
