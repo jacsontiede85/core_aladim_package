@@ -29,14 +29,20 @@ class ApiPackage {
     String sign = base64Encode(digest.bytes);
     String token = "$header64.$payload64.$sign";
 
-    var res = await http.post(Uri.parse(urlServer??'not found'), body: {'connection': banco ?? 'oracle',  'token': token});
-    if (res.statusCode == 200) {
-      //print(sql);
-      //print(res.body);
-      return res.body.replaceAll("null", '""');
-      //return res.body;
-    } else {
-      print('Erro de API');
+    try {
+      var res = await http.post(Uri.parse(urlServer ?? 'not found'),
+          body: {'connection': banco ?? 'oracle', 'token': token});
+      if (res.statusCode == 200) {
+        //print(sql);
+        //print(res.body);
+        return res.body.replaceAll("null", '""');
+        //return res.body;
+      } else {
+        print('Erro de API');
+        return "";
+      }
+    } catch (e) {
+      print('API catch');
       return "";
     }
   }
