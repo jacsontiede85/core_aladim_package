@@ -31,7 +31,7 @@ class ApiPackage {
 
     try {
       var res = await http.post(Uri.parse(urlServer ?? 'not found'),
-          body: {'connection': banco ?? 'oracle', 'token': token});
+          body: {'connection': banco ?? 'atacado', 'token': token});
       if (res.statusCode == 200) {
         //print(sql);
         //print(res.body);
