@@ -98,6 +98,7 @@ class ApiPackage {
         //sql = "${tmp[0]}values$sql";
       } catch (e) {}
 
+      //MUDANÇA FEITA NO UPDATE, TRATANDO O AND E OS PARENTESES -- MARCO 13/10/2023
       //TRATAR ASPA SIMPLES NO UPDATE
     } else if (sql.toString().replaceAll(' ', '').substring(0, 6).toLowerCase() == 'update') {
       try {
@@ -105,8 +106,13 @@ class ApiPackage {
         sql = sql.toString().replaceAll("' WHERE", "@ WHERE").replaceAll("'  WHERE", "@ where").replaceAll("'   WHERE", "@ WHERE");
         sql = sql.replaceAll("='", "= @").replaceAll("= '", "= @").replaceAll("=  '", "= @").replaceAll("=   '", "= @");
         sql = sql.replaceAll("',", "@,").replaceAll("' ,", "@,").replaceAll("'  ,", "@,").replaceAll("'   ,", "@,");
+        sql = sql.replaceAll(",'", ",@").replaceAll(", '", ",@").replaceAll(",  '", ",@").replaceAll(",   '", ",@");
+        sql = sql.toString().replaceAll("')", "@)").replaceAll("' )", "@ )").replaceAll("'  )", "@  )").replaceAll("'   )", "@   )");
+        sql = sql.toString().replaceAll("('", "(@").replaceAll("( '", "( @").replaceAll("(  '", "(  @").replaceAll("(   '", "(   @");
+        sql = sql.toString().replaceAll("'AND", "@and").replaceAll("' AND", "@and").replaceAll("'  AND", "@and").replaceAll("'   AND", "@and");
+        sql = sql.toString().replaceAll("'AND", "@and").replaceAll("' AND", "@and").replaceAll("'  AND", "@and").replaceAll("'   AND", "@and");
         sql = sql.replaceAll("'", "''");
-        sql = sql.replaceAll("= @", "= '").replaceAll("@,", "',");
+        sql = sql.replaceAll("= @", "= '").replaceAll("@,", "',").replaceAll(",@",",'").replaceAll("@)", "')").replaceAll("(@", "('").replaceAll("@and", "' AND");
         sql = sql.toString().replaceAll("@ where", "' where");
         sql = sql.toString().replaceAll("@ WHERE", "' WHERE");
       } catch (e) {}
