@@ -111,7 +111,7 @@ class ApiPackage {
         sql = sql.toString().replaceAll("('", "(@").replaceAll("( '", "( @").replaceAll("(  '", "(  @").replaceAll("(   '", "(   @");
         sql = sql.toString().replaceAll("'AND", "@and").replaceAll("' AND", "@and").replaceAll("'  AND", "@and").replaceAll("'   AND", "@and");
         sql = sql.toString().replaceAll("'AND", "@and").replaceAll("' AND", "@and").replaceAll("'  AND", "@and").replaceAll("'   AND", "@and");
-        // sql = sql.replaceAll("'", "''");
+        sql = sql.replaceAll("'", "''");
         sql = sql.replaceAll("= @", "= '").replaceAll("@,", "',").replaceAll(",@",",'").replaceAll("@)", "')").replaceAll("(@", "('").replaceAll("@and", "' AND");
         sql = sql.toString().replaceAll("@ where", "' where");
         sql = sql.toString().replaceAll("@ WHERE", "' WHERE");
