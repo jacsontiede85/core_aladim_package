@@ -147,4 +147,44 @@ class ApiPackage {
     return sql;
   }
 
+  Future<String> getDataReportApiJWT({required Map dados, required String url}) async {
+    //header
+    Map<String, String> header = {
+      "alg": "HS256",
+      "typ": "JWT",
+    };
+    String header64 = base64Encode(jsonEncode(header).codeUnits);
+
+    //payload
+    var payload = dados;
+    String payload64 = base64Encode(utf8.encode(jsonEncode(payload))); //utf8.encode para caracteres especiais
+    //assinatura
+    String secret = "tisa098*";
+    Hmac hmac = Hmac(sha256, secret.codeUnits);
+    Digest digest = hmac.convert("$header64.$payload64".codeUnits);
+    String sign = base64Encode(digest.bytes);
+    String token = "$header64.$payload64.$sign";
+    
+    http.Response res = await http.post(
+      Uri.parse(url),
+      body: jsonEncode(
+        {
+          'token': token,
+        },
+      ),
+    );
+
+    if (res.statusCode == 200) {
+    
+      return res.body.replaceAllMapped(
+        RegExp(r'\:\bnull\b\,'), 
+        (match) {
+          return ':"",';
+        },
+      );
+    } else {
+      return "";
+    }
+  }
+
 }
