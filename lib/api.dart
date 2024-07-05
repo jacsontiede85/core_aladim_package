@@ -147,7 +147,7 @@ class ApiPackage {
     return sql;
   }
 
-  Future<String> getDataReportApiJWT({required Map dados, required String url}) async {
+  Future<String> getDataReportApiJWT({required Map dados, required String url, bool? printarUrlToken}) async {
     //header
     Map<String, String> header = {
       "alg": "HS256",
@@ -173,6 +173,11 @@ class ApiPackage {
         },
       ),
     );
+
+    if(printarUrlToken ?? false){
+      print('url: $url');
+      print('token: $token');
+    }
 
     if (res.statusCode == 200) {
     
