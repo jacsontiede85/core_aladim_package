@@ -192,4 +192,22 @@ class ApiPackage {
     }
   }
 
+  Future<Map<String,dynamic>> sendJsonRequest ({required Map<String, dynamic> dados, required String url}) async {
+    try{
+      http.Response res = await http.post(
+        Uri.parse(url),
+        headers: {
+          
+        },
+        body: jsonEncode(dados)
+      );
+      
+      if(res.statusCode == 200) return jsonDecode(res.body);
+      
+      throw 'Erro ao executar função sendJsonRequest - Core Aladim Package';
+    }catch(e){
+      return {};
+    }
+  }
+
 }
